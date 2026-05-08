@@ -1,0 +1,27 @@
+CREATE TABLE category( 
+categoryId INTEGER PRIMARY KEY AUTOINCREMENT,
+categoryName text NOT NULL
+);
+CREATE TABLE expense(
+expenseID INTEGER PRIMARY KEY AUTOINCREMENT,
+amount REAL NOT NULL,
+date text NOT NULL,
+categoryId INTEGER NOT NULL,
+FOREIGN KEY (categoryId) REFERENCES category(categoryId)
+);
+CREATE TABLE BudgetCycle(
+cycleID INTEGER PRIMARY KEY AUTOINCREMENT,
+totalAllowance REAL NOT NULL,
+startDate text NOT NULL,
+endDate text NOT NULL,
+isActive INTEGER NOT NULL
+);
+CREATE TABLE users(
+userID INTEGER   PRIMARY KEY AUTOINCREMENT,
+userName text NOT NULL,
+isLocked INTEGER NOT NULL
+);
+ALTER TABLE expense ADD COLUMN userId INTEGER;
+ALTER TABLE BudgetCycle ADD COLUMN userId INTEGER;
+;
+DELETE FROM expense;
